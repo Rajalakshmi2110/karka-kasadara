@@ -1,0 +1,117 @@
+/* Page layout */
+.clock-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 40px;
+    background: linear-gradient(to right, #1e1e1c, #2e2b2b);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #d4c4aa;
+  }
+  
+  /* Clock header */
+  .clock-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .clock-header h2 {
+    font-size: 2.5rem;
+    color: #a68a64;
+    text-shadow: 0 0 8px #3d2b1f;
+  }
+  
+  /* Grid layout */
+  .clock-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 40px;
+  }
+  
+  /* Individual section styling */
+  .clock-section {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #3d2b1f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    transition: transform 0.3s ease;
+  }
+  
+  .clock-section:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Section headers */
+  .clock-section h3 {
+    font-size: 1.4rem;
+    color: #d4c4aa;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #5e524c;
+  }
+  
+  /* Inputs */
+  .clock-section input {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #5e524c;
+    background: #2e2b2b;
+    color: #f0f0f0;
+  }
+  
+  /* Buttons */
+  .clock-section button {
+    width: 80%;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: #a68a64;
+    color: #1e1e1c;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .clock-section button:hover {
+    background: #7e6140;
+    transform: scale(1.03);
+  }
+  
+  /* Timer & stopwatch display */
+  .clock-section h2 {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: #6b4f3b;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Alarm set text */
+  .clock-section p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #c2b59b;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
+    .clock-header h2 {
+      font-size: 2rem;
+    }
+  
+    .clock-section h2 {
+      font-size: 1.5rem;
+    }
+  }
+  

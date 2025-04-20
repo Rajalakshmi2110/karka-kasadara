@@ -1,0 +1,113 @@
+/* Dashboard Container */
+.dashboard-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #1e1e1c, #2e2b2b);
+  padding: 30px;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Page Titles */
+.dashboard-title,
+.uploaded-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #d4c4aa;
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+/* Grid for Navigation Buttons */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+/* Button Base Style */
+.dashboard-btn {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1e1e1c;
+  background-color: #a68a64;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Darken on Hover */
+.dashboard-btn:hover {
+  background-color: #7e6140;
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Files Section Title */
+.uploaded-title {
+  font-size: 2rem;
+  color: #d4c4aa;
+}
+
+/* Files Grid Layout */
+.files-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Individual File Card */
+.file-card {
+  padding: 16px;
+  background-color: #2e2b2b;
+  color: #d4c4aa;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.file-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* File Name */
+.file-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #d4c4aa;
+}
+
+/* File Link Styling */
+.file-link {
+  color: #88a8c9;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.file-link:hover {
+  text-decoration: underline;
+  color: #c3d3e4;
+}
+
+/* Message for No Files */
+.no-files {
+  font-size: 1rem;
+  color: #9a958d;
+  text-align: center;
+  padding: 10px;
+}
