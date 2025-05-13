@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DayCard from "./DayCard";
+import "../styles/PlannerGrid.css";
 
 const totalDays = 31;
 

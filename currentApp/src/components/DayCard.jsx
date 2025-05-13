@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/PlannerGrid.css";
 
 const DayCard = ({ day, value, onChange }) => {
   return (

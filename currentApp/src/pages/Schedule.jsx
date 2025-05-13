@@ -1,5 +1,7 @@
 import React from "react";
 import PlannerGrid from "../components/PlannerGrid";
+import "../styles/PlannerGrid.css";
+
 export default function Schedule() {
 
   return (

@@ -1,0 +1,57 @@
+/* Planner Grid Container */
+.planner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(to right, #1e1e1c, #2e2b2b);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Day Card Styling */
+  .day-card {
+    background-color: #2e2b2b;
+    border-radius: 12px;
+    padding: 16px;
+    color: #d4c4aa;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .day-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Day Title */
+  .day-card h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #d4c4aa;
+  }
+  
+  /* Input Textarea */
+  .input-box {
+    width: 100%;
+    min-height: 70px;
+    resize: vertical;
+    padding: 10px;
+    background-color: #1e1e1c;
+    color: #d4c4aa;
+    border: 1px solid #a68a64;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .input-box:focus {
+    border-color: #c3b08f;
+    box-shadow: 0 0 6px rgba(198, 168, 116, 0.4);
+    outline: none;
+  }
+  
