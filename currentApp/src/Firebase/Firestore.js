@@ -12,6 +12,13 @@ export async function addNote(userId, title, content) {
   });
 }
 
+// Fetch all notes from Firestore
+export async function fetchNotes() {
+  const querySnapshot = await getDocs(collection(db, "notes"));
+  return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+}
+
+
 // Fetch notes only by current user, sorted by timestamp
 export async function fetchUserNotes(userId) {
   const q = query(

@@ -3,6 +3,14 @@ import { auth, googleProvider } from "../Firebase/Firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import socket from './socket';
+
+// ✅ Avoid re-declaring auth – already imported from Firebase.js
+auth.onAuthStateChanged(user => {
+  if (user) {
+    socket.emit('join', user.uid);
+  }
+});
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -54,9 +62,8 @@ const Login = () => {
         setPasswordVisible(!passwordVisible);
     };
 
-    // Fix: Function to navigate to Sign Up page
     const navigateToSignUp = () => {
-        navigate("/register"); // Navigate to the Register page
+        navigate("/register");
     };
 
     return (
@@ -121,15 +128,14 @@ const Login = () => {
                     Continue as Guest
                 </button>
 
-                {/* Ensure Sign Up button works */}
                 <div className="sign-up-link">
                     <p>
-                        Don't have an account? 
+                        Don't have an account?
                         <span
-                            onClick={navigateToSignUp} // Ensure this is the correct handler
+                            onClick={navigateToSignUp}
                             style={{ color: "blue", cursor: "pointer" }}
                         >
-                            Sign Up
+                            {" "}Sign Up
                         </span>
                     </p>
                 </div>

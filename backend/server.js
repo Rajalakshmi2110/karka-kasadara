@@ -1,36 +1,54 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+const http = require('http');
 const cors = require('cors');
-
-// Load environment variables from .env file
-dotenv.config();
+const express = require('express');
+const { Server } = require('socket.io');
 
 const app = express();
+const server = http.createServer(app);
 
-// Middleware
-app.use(cors());
-app.use(express.json()); // Parses incoming JSON
-
-// Connect to MongoDB Atlas
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(() => console.log("✅ MongoDB Connected"))
-    .catch(err => console.error("❌ MongoDB Connection Error:", err));
-
-// Routes
-const authRoutes = require('./routes/auth');
-app.use('/api/auth', authRoutes);
-
-// Test root route
-app.get("/", (req, res) => {
-    res.send("🎉 Backend is running!");
+// ✅ Enable CORS
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173", // your frontend port
+    methods: ["GET", "POST"]
+  }
 });
 
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+// Optional: also allow CORS for API routes (REST endpoints)
+app.use(cors({
+  origin: "http://localhost:5173"
+}));
+
+// Set to track the online users
+const onlineUsers = new Set(); // Store online users
+
+io.on('connection', (socket) => {
+  console.log('User connected:', socket.id);
+
+  // Add user to the onlineUsers set
+  onlineUsers.add(socket.id);
+
+  // Emit the updated online users list to all clients
+  io.emit('onlineUsers', Array.from(onlineUsers));
+
+  socket.on('joinRoom', (roomId) => {
+    socket.join(roomId);
+    console.log(`User ${socket.id} joined room ${roomId}`);
+  });
+
+  socket.on('sendMessage', ({ roomId, message }) => {
+    io.to(roomId).emit('receiveMessage', message);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('User disconnected:', socket.id);
+    // Remove user from the onlineUsers set
+    onlineUsers.delete(socket.id);
+    // Emit the updated online users list to all clients
+    io.emit('onlineUsers', Array.from(onlineUsers));
+  });
+});
+
+server.listen(8080, () => {
+  console.log('Server running on http://localhost:8080');
 });

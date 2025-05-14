@@ -16,6 +16,7 @@ import { ChatProvider } from "./components/ChatContext";
 import Topbar from './components/TopBar'; // ✅ Imported Topbar
 import "./styles/App.css";
 import Register from "./pages/Register.jsx";
+import ChatPage from "./pages/ChatPage";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -45,6 +46,8 @@ const App = () => {
                   {!guest && <Route path="/schedule" element={<Schedule />} />}
                   <Route path="/settings" element={<Settings />} />
                   <Route path="/clock" element={<Clock />} />
+                                  <Route path="/ChatPage" element={user? <ChatPage />: <Login />} />
+
                   <Route path="/Goal" element={<Goal />} />
                   <Route path="/streakpage" element={<StreakPage />} />
                   <Route path="*" element={<Navigate to="/dashboard" />} />
