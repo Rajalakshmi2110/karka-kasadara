@@ -6,46 +6,64 @@ const { Server } = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 
-// ✅ Enable CORS
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // your frontend port
+    origin: "http://localhost:5173", // Replace with your React app's URL
     methods: ["GET", "POST"]
   }
 });
 
-// Optional: also allow CORS for API routes (REST endpoints)
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: "http://localhost:5173" // Replace with your React app's URL
 }));
-
-// Set to track the online users
-const onlineUsers = new Set(); // Store online users
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
 
-  // Add user to the onlineUsers set
-  onlineUsers.add(socket.id);
-
-  // Emit the updated online users list to all clients
-  io.emit('onlineUsers', Array.from(onlineUsers));
-
+  // Join a room
   socket.on('joinRoom', (roomId) => {
     socket.join(roomId);
     console.log(`User ${socket.id} joined room ${roomId}`);
   });
 
-  socket.on('sendMessage', ({ roomId, message }) => {
-    io.to(roomId).emit('receiveMessage', message);
+  // Start Video Call (Offer)
+  socket.on('startCall', ({ roomId, userEmail }) => {
+    // Notify other users in the room that someone started a call
+    socket.to(roomId).emit('startCall', { userEmail });
+    console.log(`User ${userEmail} started a call in room ${roomId}`);
   });
 
+  // Join Video Call (Answer)
+  socket.on('joinCall', ({ roomId, userEmail }) => {
+    // Notify others that the user is joining the call
+    socket.to(roomId).emit('joinCall', { userEmail });
+    console.log(`User ${userEmail} is joining the call in room ${roomId}`);
+  });
+
+  // Handle Sending Video Offer (WebRTC)
+  socket.on('offer', ({ offer, roomId }) => {
+    // Forward the offer to other participants in the room
+    socket.to(roomId).emit('offer', offer);
+    console.log(`Offer sent to room ${roomId}`);
+  });
+
+  // Handle Answer (WebRTC)
+  socket.on('answer', ({ answer, roomId }) => {
+    // Forward the answer to the offerer
+    socket.to(roomId).emit('answer', answer);
+    console.log(`Answer sent to room ${roomId}`);
+  });
+
+  // Handle ICE Candidate (WebRTC)
+  socket.on('ice-candidate', ({ candidate, roomId }) => {
+    // Forward ICE candidates to other participants in the room
+    socket.to(roomId).emit('ice-candidate', candidate);
+    console.log(`ICE Candidate sent to room ${roomId}`);
+  });
+
+  // Handle User Disconnection
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);
-    // Remove user from the onlineUsers set
-    onlineUsers.delete(socket.id);
-    // Emit the updated online users list to all clients
-    io.emit('onlineUsers', Array.from(onlineUsers));
   });
 });
 
