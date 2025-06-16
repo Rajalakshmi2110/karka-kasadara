@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { db, auth } from '../Firebase/Firebase'; // Import initialized Firebase
+import { db, auth } from '../Firebase/Firebase';
 import { collection, addDoc, onSnapshot, query, where } from 'firebase/firestore';
 
 const Conversations = ({ setActiveRoom }) => {
@@ -31,7 +31,7 @@ const Conversations = ({ setActiveRoom }) => {
 
     await addDoc(collection(db, 'chatRooms'), {
       name: newRoomName,
-      members: [user.email], // Initial member is the creator
+      members: [user.email], 
       createdAt: new Date()
     });
 

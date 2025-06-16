@@ -1,5 +1,5 @@
-import { auth } from "./Firebase"; // Ensure correct import
-import { db } from "./Firebase"; // Import Firestore instance
+import { auth } from "./Firebase"; 
+import { db } from "./Firebase"; 
 import { doc, setDoc } from "firebase/firestore";
 import axios from "axios";
 

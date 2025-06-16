@@ -16,7 +16,7 @@ function Planner({ setStreak }) {
       i === index ? { ...task, completed: !task.completed } : task
     );
     setTasks(updatedTasks);
-    setStreak((prev) => prev + 1); // Increase streak when task completed
+    setStreak((prev) => prev + 1);
   };
 
   const removeTask = (index) => {

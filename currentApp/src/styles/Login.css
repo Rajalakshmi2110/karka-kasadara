@@ -1,112 +1,133 @@
 /* Login.css */
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1e1e1c;
 }
 
 .login-card {
-    background-color: white;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+  background-color: #2e2b2b;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.05);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  color: #d4c4aa;
 }
 
 .login-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #333;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #c3b08f;
 }
 
 .login-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    outline: none;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: #1e1e1c;
+  color: #d4c4aa;
+  border: 1px solid #a68a64;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+}
+
+.login-input::placeholder {
+  color: #aaa;
 }
 
 .password-input-container {
-    position: relative;
+  position: relative;
 }
 
 .password-visibility-toggle {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    font-size: 14px;
-    color: #555;
-    cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
 }
 
 .login-button,
 .google-button,
 .guest-button {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.2s ease;
 }
 
 .login-button {
-    background-color: #4CAF50;
-    color: white;
+  background-color: #a68a64;
+  color: #1e1e1c;
+}
+
+.login-button:hover {
+  background-color: #c3b08f;
 }
 
 .google-button {
-    background-color: #DB4437;
-    color: white;
+  background-color: #8b2c2c;
+  color: white;
+}
+
+.google-button:hover {
+  background-color: #b02f2f;
 }
 
 .guest-button {
-    background-color: #f1f1f1;
-    color: #333;
+  background-color: #3a3a3a;
+  color: #d4c4aa;
+}
+
+.guest-button:hover {
+  background-color: #505050;
 }
 
 .login-button:disabled,
 .google-button:disabled,
 .guest-button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
+  background-color: #555;
+  cursor: not-allowed;
 }
 
 .error-message {
-    color: #ff4d4d;
-    font-size: 14px;
-    margin-top: 10px;
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .divider {
-    margin: 20px 0;
-    font-size: 16px;
-    color: #888;
+  margin: 20px 0;
+  font-size: 16px;
+  color: #888;
 }
 
 .sign-up-link p {
-    font-size: 14px;
-    color: #555;
+  font-size: 14px;
+  color: #aaa;
 }
 
 .sign-up-link span {
-    font-weight: 600;
-    color: #0066cc;
-    cursor: pointer;
+  font-weight: 600;
+  color: #ffcc00;
+  cursor: pointer;
 }
 
 .sign-up-link span:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }

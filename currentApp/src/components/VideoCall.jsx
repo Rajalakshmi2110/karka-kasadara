@@ -4,8 +4,8 @@ const VideoCall = ({ socket, roomId, userEmail }) => {
   const localVideo = useRef(null);
   const remoteVideo = useRef(null);
   const peerConnection = useRef(null);
-  const [isCalling, setIsCalling] = useState(false); // to track if the call is in progress
-  const [stream, setStream] = useState(null); // to hold the local stream for stopping the call
+  const [isCalling, setIsCalling] = useState(false); 
+  const [stream, setStream] = useState(null);
   const servers = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const VideoCall = ({ socket, roomId, userEmail }) => {
       .then(userStream => {
         console.log('Media stream obtained:', userStream);
         localVideo.current.srcObject = userStream;
-        setStream(userStream); // save the stream for later stopping
+        setStream(userStream);
         userStream.getTracks().forEach(track => {
           peerConnection.current.addTrack(track, userStream);
         });
@@ -75,17 +75,16 @@ const VideoCall = ({ socket, roomId, userEmail }) => {
 
   const endCall = () => {
     console.log('Ending call...');
-    // Stop all media tracks (video/audio)
+
     if (stream) {
       stream.getTracks().forEach(track => track.stop());
     }
 
-    // Close the peer connection
     if (peerConnection.current) {
       peerConnection.current.close();
     }
 
-    setIsCalling(false); // Reset the calling state
+    setIsCalling(false);
   };
 
   return (

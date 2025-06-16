@@ -14,15 +14,17 @@ const PlannerGrid = () => {
   };
 
   return (
-    <div className="planner-grid">
-      {Array.from({ length: totalDays }, (_, index) => (
-        <DayCard
-          key={index}
-          day={index + 1} // Numbering days from 1 to 31
-          value={planner[index]}
-          onChange={(e) => handleInputChange(index, e.target.value)}
-        />
-      ))}
+    <div className="planner-grid-wrapper">
+      <div className="planner-grid">
+        {Array.from({ length: totalDays }, (_, index) => (
+          <DayCard
+            key={index}
+            day={index + 1}
+            value={planner[index]}
+            onChange={(e) => handleInputChange(index, e.target.value)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { signUpUser, signInUser, signOutUser } from "./UserAuth";
-import { AuthContext } from "./AuthContext"; // Import the context
+import { AuthContext } from "./AuthContext"; 
 
 const Auth = () => {
-    const { login } = useContext(AuthContext); // Get login function from context
+    const { login } = useContext(AuthContext); 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
@@ -14,11 +14,11 @@ const Auth = () => {
         try {
             if (isLogin) {
                 const user = await signInUser(email, password);
-                login(user, user.token); // Update AuthContext state
+                login(user, user.token); 
                 alert("Signed in successfully!");
             } else {
                 const user = await signUpUser(email, password, username);
-                login(user, user.token); // Update AuthContext state
+                login(user, user.token);
                 alert("Account created successfully!");
             }
         } catch (error) {

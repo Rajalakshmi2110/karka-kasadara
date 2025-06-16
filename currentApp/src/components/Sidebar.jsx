@@ -1,23 +1,22 @@
 import React from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom"; // Import useLocation hook
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../Firebase/Firebase";
-import "../styles/App.css"; // Ensure styles exist
+import "../styles/App.css";
 import "../styles/Sidebar.css";
 
 export default function Sidebar({ user, guest }) {
   const navigate = useNavigate();
-  const location = useLocation(); // Hook to get the current location
+  const location = useLocation(); 
 
   const handleLogout = async () => {
     if (guest) {
-      navigate("/login"); // Redirect guest users to login
+      navigate("/login"); 
     } else {
       await auth.signOut();
       navigate("/login");
     }
   };
 
-  // Helper function to check if the link is active
   const isActive = (path) => location.pathname === path;
 
   return (

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
-//import '../styles/online.css';
 
-const socket = io('http://localhost:8080'); // Assuming your server is on localhost:8080
+
+const socket = io('http://localhost:8080'); 
 
 const Online = () => {
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
-    // Listen for the online users list from the server
+   
     socket.on('onlineUsers', (users) => {
       setOnlineUsers(users);
     });
 
-    // Clean up the socket listener when component unmounts
+ 
     return () => {
       socket.off('onlineUsers');
     };
@@ -36,7 +36,7 @@ const Online = () => {
           </div>
         ))
       ) : (
-        <p>No users online</p>
+        <p> 👤 No users online</p>
       )}
     </div>
   );

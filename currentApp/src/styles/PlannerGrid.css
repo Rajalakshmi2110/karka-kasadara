@@ -1,14 +1,37 @@
-/* Planner Grid Container */
-.planner-grid {
+/* Full Page Layout */
+.schedule-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, #1e1e1c, #2e2b2b);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+  }
+  
+  /* Header */
+  .title {
+    color: #d4c4aa;
+    font-size: 2rem;
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  
+  /* Grid Scroll Wrapper */
+  .planner-grid-wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0 20px 20px;
+  }
+  
+  /* Grid Layout */
+  .planner-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
-    padding: 40px 20px;
-    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    background: linear-gradient(to right, #1e1e1c, #2e2b2b);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 30px;
   }
   
   /* Day Card Styling */
@@ -26,7 +49,6 @@
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
   }
   
-  /* Day Title */
   .day-card h3 {
     font-size: 1.2rem;
     font-weight: bold;
@@ -34,7 +56,7 @@
     color: #d4c4aa;
   }
   
-  /* Input Textarea */
+  /* Textarea */
   .input-box {
     width: 100%;
     min-height: 70px;
@@ -54,4 +76,3 @@
     box-shadow: 0 0 6px rgba(198, 168, 116, 0.4);
     outline: none;
   }
-  
